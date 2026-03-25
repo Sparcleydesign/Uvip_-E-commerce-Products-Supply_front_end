@@ -6,7 +6,7 @@ import LoadingScreen from '@/components/ui/LoadingScreen';
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-next-poppins',
+  variable: '--font-poppins',
 });
 
 export const metadata = {

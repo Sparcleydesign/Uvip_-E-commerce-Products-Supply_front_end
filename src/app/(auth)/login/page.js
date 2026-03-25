@@ -30,11 +30,11 @@ export default function LoginPage() {
   return (
     <div onKeyDown={handleKeyDown}>
       <Link href="/" className="mb-8 flex flex-col items-start w-fit group">
-        <Image 
-          src="/assets/uvip_logo_main.png" 
-          alt="UVIP Logo" 
-          width={150} 
-          height={48} 
+        <Image
+          src="/assets/uvip_logo_main.png"
+          alt="UVIP Logo"
+          width={150}
+          height={48}
           className="h-12 w-auto object-contain transition-transform group-hover:scale-105"
           priority
         />
@@ -42,14 +42,14 @@ export default function LoginPage() {
           Automate Your E-commerce Products Supply
         </span>
       </Link>
-      
+
       <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Welcome back</h2>
       <p className="text-sm text-gray-500 mt-2 mb-10 font-medium">Sign in to your account</p>
 
       {error && (
         <div className="bg-red-50 text-red-500 text-xs font-semibold p-3 rounded-xl mb-6 border border-red-100 flex items-center gap-2">
-           <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
-           Please fill in all fields
+          <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+          Please fill in all fields
         </div>
       )}
 
@@ -58,8 +58,8 @@ export default function LoginPage() {
           <label className="text-[11px] font-bold uppercase tracking-[0.15em] text-gray-400 pl-4 block">
             Email Address
           </label>
-          <input 
-            type="email" 
+          <input
+            type="email"
             placeholder="example@mail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -76,8 +76,8 @@ export default function LoginPage() {
               Forgot password?
             </Link>
           </div>
-          <input 
-            type="password" 
+          <input
+            type="password"
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -85,10 +85,10 @@ export default function LoginPage() {
           />
         </div>
 
-        <Button 
+        <Button
           onClick={handleLogin}
-          variant="primary" 
-          size="lg" 
+          variant="primary"
+          size="lg"
           className="w-full mt-4 shadow-xl shadow-sage/10 h-12 rounded-2xl"
         >
           Sign In

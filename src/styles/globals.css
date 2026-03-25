@@ -7,7 +7,7 @@
   --color-cream-dark: #e8dfc0;
   
   /* Map Tailwind font to the Next.js CSS variable */
-  --font-poppins: var(--font-next-poppins), "Poppins", sans-serif;
+  --font-poppins: var(--font-poppins), "Poppins", sans-serif;
   
   --animate-float: float 4s ease-in-out infinite;
   --animate-glow: borderGlow 3s ease-in-out infinite;
@@ -45,6 +45,39 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes flowPulse {
+    0%, 100% { opacity: 0.3; transform: scaleX(0.95); }
+    50% { opacity: 1; transform: scaleX(1); }
+  }
+
+  @keyframes arrowFlow {
+    0% { opacity: 0.2; transform: translateX(-4px); }
+    50% { opacity: 1; transform: translateX(2px); }
+    100% { opacity: 0.2; transform: translateX(-4px); }
+  }
+
+  @keyframes uvipGlow {
+    0%, 100% { box-shadow: 0 0 0px rgba(168, 194, 117, 0); }
+    50% { box-shadow: 0 0 28px rgba(168, 194, 117, 0.55), 0 0 60px rgba(168, 194, 117, 0.2); }
+  }
+
+  @keyframes nodePing {
+    0% { transform: scale(1); opacity: 0.6; }
+    70% { transform: scale(1.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+
+  @keyframes dataFlow {
+    0% { left: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  --animate-uvip-glow: uvipGlow 2.5s ease-in-out infinite;
+  --animate-arrow-flow: arrowFlow 1.4s ease-in-out infinite;
+  --animate-node-ping: nodePing 2s ease-out infinite;
 }
 
 :root {
@@ -107,4 +140,15 @@ html {
 ::selection {
   background: #C5D89D;
   color: white;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
