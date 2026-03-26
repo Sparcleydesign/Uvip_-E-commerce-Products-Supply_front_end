@@ -1,4 +1,12 @@
 export const dashboardData = {
+  store: {
+    name: "My Fashion Store",
+    url: "myshop.custom.com",
+    platform: "OpenCart 4.x",
+    logo: "opencart",
+    status: "connected",
+    lastSync: "2 mins ago"
+  },
   stats: [
     { num: "5", label: "Active Suppliers", change: "+1 this week", color: "text-sage-dark" },
     { num: "2,847", label: "Total Products", change: "+28 today", color: "text-gray-900" },

@@ -47,13 +47,9 @@ const Footer = () => {
             <div className="space-y-4 text-sm text-gray-600">
               <div>
                 <a href="https://sparcley.co.uk/" target="_blank" rel="noopener noreferrer" className="block w-fit">
-                  <Image
-                    src="/assets/SPARCLEY_Logo.webp"
-                    alt="Sparcley Logo"
-                    width={150}
-                    height={40}
-                    className="h-7 w-auto object-contain mb-4 brightness-0 transition-all duration-500 hover:opacity-80"
-                  />
+                  <span className="text-xl font-black tracking-tight text-gray-900 group-hover:text-sage-dark transition-colors mb-4 block underline decoration-sage/30 decoration-2 underline-offset-4">
+                    SPARCLEY LTD
+                  </span>
                 </a>
                 <p className="text-xs text-gray-400 flex items-center gap-1.5">
                   <FiCopy className="w-2.5 h-2.5" /> Code: 16125713
@@ -112,13 +108,7 @@ const Footer = () => {
           <div className="flex items-center gap-2">
             <span>© 2026 UVIP by</span>
             <a href="https://sparcley.co.uk/" target="_blank" rel="noopener noreferrer" className="inline-block transition-opacity hover:opacity-60">
-              <Image
-                src="/assets/SPARCLEY_Logo.webp"
-                alt="Sparcley"
-                width={80}
-                height={20}
-                className="h-3 w-auto opacity-80 brightness-0"
-              />
+              <span className="text-[10px] font-black text-gray-900 hover:text-sage-dark transition-colors">SPARCLEY LTD</span>
             </a>
             <span>All rights reserved.</span>
           </div>
