@@ -2,6 +2,9 @@
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { useToast } from '@/context/ToastContext';
 
 const SidebarItem = ({ href, label, icon: Icon, badge, badgeColor = 'bg-red-500', active }) => (
   <Link
@@ -44,11 +47,17 @@ const Icons = {
 };
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
-  const router = useRouter();
+  const router   = useRouter();
   const pathname = usePathname();
+  const { logout } = useAuth();
+  const toast = useToast();
+  const [loggingOut, setLoggingOut] = useState(false);
 
-  const handleLogout = () => {
-    localStorage.removeItem('uvip_auth');
+  const handleLogout = async () => {
+    if (loggingOut) return;
+    setLoggingOut(true);
+    toast.info('Signing you out...');
+    await logout();
     router.push('/login');
   };
 
@@ -124,10 +133,15 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         <div className="shrink-0 p-3 border-t border-gray-100">
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-[11px] font-bold uppercase tracking-widest text-gray-400 hover:bg-red-50 hover:text-red-500 transition-all group"
+            disabled={loggingOut}
+            className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-[11px] font-bold uppercase tracking-widest text-gray-400 hover:bg-red-50 hover:text-red-500 transition-all group disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           >
-            <div className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100 transition-opacity"><Icons.Logout /></div>
-            Sign Out
+            <div className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100 transition-opacity">
+              {loggingOut
+                ? <svg className="animate-spin" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/></svg>
+                : <Icons.Logout />}
+            </div>
+            {loggingOut ? 'Signing out…' : 'Sign Out'}
           </button>
         </div>
       </aside>
