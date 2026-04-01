@@ -2,6 +2,8 @@ import { Poppins } from 'next/font/google';
 import '@/styles/globals.css';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import LoadingScreen from '@/components/ui/LoadingScreen';
+import { AuthProvider } from '@/context/AuthContext';
+import { ToastProvider } from '@/context/ToastContext';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -67,9 +69,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${poppins.variable} font-poppins bg-cream text-gray-900 antialiased`}>
+      <body suppressHydrationWarning className={`${poppins.variable} font-poppins bg-cream text-gray-900 antialiased`}>
         <LoadingScreen />
-        {children}
+        <ToastProvider>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </ToastProvider>
         <ScrollToTop />
       </body>
     </html>
